@@ -9,6 +9,7 @@ export const FILTER_DB = 'FILTER_DB';
 export const FILTER_A_Z = 'FILTER_A_Z';
 export const FILTER_DIET = 'FILTER_DIET';
 export const FILTER_SCORE = 'FILTER_SCORE';
+export const FILTER_BY_NAME = 'FILTER_BY_NAME';
 
 export function getRecipe() {
     return async (dispatch) => {
@@ -29,4 +30,83 @@ export function cleanRecipe(dispatch) {
         type: CLEAN_DIETS,
         payload: [],
     });
+}
+
+export function getDiets() {
+    return async (dispatch) => {
+        try {
+            let dieta = await axios.get('http://localhost:3001/diets');
+            return dispatch({
+                type: GET_DIETS,
+                payload: dieta.data,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
+
+export function cleanDiets(dispatch) {
+    return dispatch({
+        type: CLEAN_DIETS,
+        payload: [],
+    });
+}
+
+export function FilterTypeDiet(payload) {
+    return {
+        type: FILTER_DIET,
+        payload,
+    };
+}
+
+export function FilterAZ(payload) {
+    return {
+        type: FILTER_A_Z,
+        payload,
+    };
+}
+
+export function FilterMaxScore(payload) {
+    return {
+        type: FILTER_SCORE,
+        payload,
+    };
+}
+export function FilterCreated(payload) {
+    return {
+        type: FILTER_DB,
+        payload,
+    };
+}
+
+export function getRecipebyName(name) {
+    return async (dispatch) => {
+        try {
+            let json = await axios.get(
+                `http://localhost:3001/recipes?name=${name}`
+            );
+            return dispatch({
+                type: FILTER_BY_NAME,
+                payload: json.data,
+            });
+        } catch (error) {
+            alert('No se encontro la receta');
+            console.log(error);
+        }
+    };
+}
+
+export function getDetail(id) {
+    return async (dispatch) => {
+        try {
+            let json = await axios.get(`http://localhost:3001/recipes/${id}`);
+            return dispatch({
+                type: GET_DETAIL,
+                payload: json.data,
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    };
 }

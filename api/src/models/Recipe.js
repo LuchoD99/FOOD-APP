@@ -30,5 +30,10 @@ module.exports = (sequelize) => {
         step_by_step: {
             type: DataTypes.STRING,
         },
+        createdInBd: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: true,
+        },
     });
 };
