@@ -19,7 +19,45 @@ export default function Detail() {
         <div>
             {detalles.length > 0 ? (
                 <div>
-                    <h2>{detalles[0].name}</h2>
+                    <div>
+                        <h2>{detalles[0].name.toUpperCase()}</h2>
+                        <img
+                            src={detalles[0].image}
+                            alt="img not found"
+                            width={'250px'}
+                            height={'250px'}
+                        />
+                        <h3>
+                            Diets:{detalles[0].diets.map((e) => e.name + ',')}
+                        </h3>
+                    </div>
+                    <div>
+                        <h4>Health Score: {detalles[0].health_score}º</h4>
+                        <h4>
+                            Type of dish: {detalles[0].dishtypes.toString()}
+                        </h4>
+                        <p>Summary:{detalles[0].summary}</p>
+                    </div>
+                    <div>
+                        <h4>Step By Step:</h4>
+                        {typeof detalles[0].step_by_step === 'object' ? (
+                            detalles[0].step_by_step.map((e, k) => {
+                                return (
+                                    <p key={k}>
+                                        Paso Nº{e.number}:{e.step}
+                                        <br />
+                                    </p>
+                                );
+                            })
+                        ) : (
+                            <p>{detalles[0].step_by_step}</p>
+                        )}
+                    </div>
+                    <div>
+                        <Link to={'/home'}>
+                            <button>Back to Home</button>
+                        </Link>
+                    </div>
                 </div>
             ) : (
                 <Loading />

@@ -24,6 +24,7 @@ const getAllDiet = async () => {
             });
         });
         const allDiets = await Diet.findAll();
+        console.log('Todas las dietas  en DB');
         return allDiets;
     } catch (error) {
         console.log('Tuvimos un error');

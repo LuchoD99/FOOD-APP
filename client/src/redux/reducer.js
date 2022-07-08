@@ -9,6 +9,7 @@ import {
     GET_DETAIL,
     GET_DIETS,
     GET_RECIPE,
+    POST_RECIPE,
 } from './actions';
 
 const initialState = {
@@ -129,6 +130,10 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 details: action.payload,
+            };
+        case POST_RECIPE:
+            return {
+                ...state,
             };
         default:
             return { ...state };

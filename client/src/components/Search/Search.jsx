@@ -7,7 +7,7 @@ export default function Search() {
 
     function handleChange(e) {
         e.preventDefault();
-        setName(e.target.name);
+        setName(e.target.value);
     }
 
     function handleSubmit(e) {

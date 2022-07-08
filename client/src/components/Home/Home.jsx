@@ -26,11 +26,11 @@ export default function Home() {
         setCurrentPage(pageNumber);
     }
 
-    // function handleResert(e) {
-    //     e.preventDefault();
-    //     dispatch(cleanRecipe(dispatch));
-    //     dispatch(getRecipe());
-    // }
+    function handleResert(e) {
+        e.preventDefault();
+        dispatch(cleanRecipe(dispatch));
+        dispatch(getRecipe());
+    }
     return (
         <div>
             {recipes.length > 0 ? (
@@ -42,9 +42,9 @@ export default function Home() {
                                 setCurrentPage={setCurrentPage}
                                 setOrder={setOrder}
                             />
-                            {/* <button onClick={(e) => handleResert(e)}>
+                            <button onClick={(e) => handleResert(e)}>
                                 Clear Filters
-                            </button> */}
+                            </button>
                         </div>
                         <div>
                             <div>

@@ -110,3 +110,17 @@ export function getDetail(id) {
         }
     };
 }
+
+export function postRecipe(payload) {
+    return async () => {
+        try {
+            let json = await axios.post(
+                `http://localhost:3001/recipes/${payload}`
+            );
+            alert('New Recipe is created');
+            return json;
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
