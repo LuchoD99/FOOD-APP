@@ -36,7 +36,8 @@ export default function Detail() {
                         <h4>
                             Type of dish: {detalles[0].dishtypes.toString()}
                         </h4>
-                        <p>Summary:{detalles[0].summary}</p>
+                        <h4>Summary:</h4>
+                        <p>{detalles[0].summary.replace(/<[^>]*>/g, '')}</p>
                     </div>
                     <div>
                         <h4>Step By Step:</h4>

@@ -50,10 +50,14 @@ const getDBInfo = async () => {
 };
 
 const getAllRecipe = async () => {
-    const api = await getApiInfo();
-    const db = await getDBInfo();
-    const all = api.concat(db);
-    return all;
+    try {
+        const api = await getApiInfo();
+        const db = await getDBInfo();
+        const all = api.concat(db);
+        return all;
+    } catch (error) {
+        console.log('Tuvimos un error suma entre la API y la DB');
+    }
 };
 
 module.exports = { getApiInfo, getDBInfo, getAllRecipe };

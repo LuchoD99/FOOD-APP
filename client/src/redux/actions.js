@@ -115,7 +115,8 @@ export function postRecipe(payload) {
     return async () => {
         try {
             let json = await axios.post(
-                `http://localhost:3001/recipes/${payload}`
+                'http://localhost:3001/recipes',
+                payload
             );
             alert('New Recipe is created');
             return json;

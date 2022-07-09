@@ -5,6 +5,7 @@ import { postRecipe, getDiets } from '../../redux/actions';
 export default function Creation() {
     const dispatch = useDispatch();
     const dieta = useSelector((state) => state.diets);
+    const [error, setError] = useState({});
     const [input, setInput] = useState({
         name: '',
         image: '',
@@ -39,6 +40,21 @@ export default function Creation() {
             diets: input.diets.filter((dieta) => dieta !== e),
         });
     }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        dispatch(postRecipe(input));
+        setInput({
+            name: '',
+            image: '',
+            summary: '',
+            health_score: '',
+            dishtypes: '',
+            step_by_step: '',
+            diets: [],
+        });
+        history.push('/home');
+    }
     return (
         <div>
             <div>
@@ -46,8 +62,8 @@ export default function Creation() {
                     <button>Back to Home</button>
                 </Link>
             </div>
-            <form>
-                <h2>Crete your recipe</h2>
+            <form onSubmit={(e) => handleSubmit(e)}>
+                <h2>Create your recipe</h2>
                 <div>
                     <label>NAME:</label>
                     <input
@@ -108,7 +124,7 @@ export default function Creation() {
                     />
                 </div>
                 <br />
-                {/* <div>
+                <div>
                     <label>Diets:</label>
                     <select onChange={(e) => handleSelect(e)}>
                         <option>Type of diets</option>
@@ -124,11 +140,13 @@ export default function Creation() {
                         return (
                             <div key={e}>
                                 <p>{e}</p>
-                                <button onChange={e => handleDelect(e)}>X</button>
+                                <button onChange={(e) => handleDelect(e)}>
+                                    X
+                                </button>
                             </div>
                         );
                     })}
-                </div> */}
+                </div>
                 <button type="submit">Create</button>
             </form>
         </div>
