@@ -1,12 +1,13 @@
 .loader {
     width: 100px;
     height: 100px;
+    /* margin-left: 50%; */
     box-sizing: border-box;
     border-radius: 50%;
     border-top: 5px solid #e74c3c;
     position: relative;
     animation: load 2s linear infinite;
-    left: 30rem;
+    /* left: 30rem; */
 }
 
 .loader::before,

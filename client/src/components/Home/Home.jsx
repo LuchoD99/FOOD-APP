@@ -6,6 +6,7 @@ import Filters from '../Filters/Filters';
 import Loading from '../Loading/Loading';
 import NavBar from '../NavBar/NavBar';
 import Pagination from '../Pagination/Pagination';
+import style from './Home.module.css';
 export default function Home() {
     const dispatch = useDispatch();
     const recipes = useSelector((state) => state.recipes);
@@ -32,7 +33,7 @@ export default function Home() {
         dispatch(getRecipe());
     }
     return (
-        <div>
+        <div className={style.fondo}>
             {recipes.length > 0 ? (
                 <div>
                     <NavBar />

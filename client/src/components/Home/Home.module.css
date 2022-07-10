@@ -1,0 +1,11 @@
+.fondo {
+    background: url(../../image/fondo.webp) no-repeat center fixed;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+
+    /*Probar*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
