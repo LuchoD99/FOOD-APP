@@ -90,100 +90,146 @@ export default function Creation() {
         <div className={style.fondo}>
             <div>
                 <Link to={'/home'}>
-                    <button>Back to Home</button>
+                    <button className={style.box}>Back to Home</button>
                 </Link>
             </div>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <h2>Create your recipe</h2>
-                <button type="submit">Create</button>
+            <h2 className={style.h2}>Create your recipe</h2>
+            <form onSubmit={(e) => handleSubmit(e)} className={style.fondoform}>
+                <button type="submit" className={style.boxes}>
+                    Create
+                </button>
                 <div>
-                    <label>NAME:</label>
-                    <input
-                        type="text"
-                        value={input.name}
-                        placeholder="Name..."
-                        name="name"
-                        onChange={(e) => handleChange(e)}
-                    />
-                    {errors.name && <p>{errors.name}</p>}
-                    <label>Image:</label>
-                    <input
-                        type="text"
-                        name="image"
-                        value={input.image}
-                        placeholder="Image..."
-                        onChange={(e) => handleChange(e)}
-                    />
-                    {errors.image && <p>{errors.image}</p>}
-                    <br />
-                    <label>Summary:</label>
-                    {/* <input
+                    <div className={style.primero}>
+                        <label className={style.definicion}>NAME:</label>
+                        <input
+                            className={style.inputt}
+                            type="text"
+                            value={input.name}
+                            placeholder="Name..."
+                            name="name"
+                            onChange={(e) => handleChange(e)}
+                        />
+                        {errors.name && (
+                            <p className={style.error}>{errors.name}</p>
+                        )}
+                    </div>
+                    <div className={style.primero}>
+                        <label className={style.definicion}>Image:</label>
+                        <input
+                            className={style.inputt}
+                            type="text"
+                            name="image"
+                            value={input.image}
+                            placeholder="Image..."
+                            onChange={(e) => handleChange(e)}
+                        />
+                        {errors.image && (
+                            <p className={style.error}>{errors.image}</p>
+                        )}
+                    </div>
+                    {/* <br /> */}
+                    <div className={style.primero}>
+                        <label className={style.definicion}>
+                            Health Score:
+                        </label>
+                        <input
+                            className={style.inputt}
+                            type="number"
+                            name="health_score"
+                            value={input.health_score}
+                            min="0"
+                            max={'100'}
+                            onChange={(e) => handleChange(e)}
+                        />
+                        {errors.health_score && (
+                            <p className={style.error}>{errors.health_score}</p>
+                        )}
+                    </div>
+                    <div className={style.primero}>
+                        <label className={style.definicion}>
+                            Type of Dish:
+                        </label>
+                        <input
+                            type="text"
+                            className={style.inputt}
+                            value={input.dishtypes}
+                            name="dishtypes"
+                            placeholder="dishTypes..."
+                            onChange={(e) => handleChange(e)}
+                        />
+                        {errors.dishtypes && (
+                            <p className={style.error}>{errors.dishtypes}</p>
+                        )}
+                    </div>
+                </div>
+                <div>
+                    {/* <br /> */}
+                    <div className={style.primero}>
+                        <label className={style.definicion}>
+                            Step By Step:
+                        </label>
+                        <textarea
+                            className={style.inputl}
+                            value={input.step_by_step}
+                            placeholder="Step by step..."
+                            name="step_by_step"
+                            onChange={(e) => handleChange(e)}
+                        />
+                        {errors.step_by_step && (
+                            <p className={style.error}>{errors.step_by_step}</p>
+                        )}
+                    </div>
+                    <div className={style.primero}>
+                        <label className={style.definicion}>Summary:</label>
+                        {/* <input
                         type="text"
                         value={input.summary}
                         width="250px"
                         height={'250px'}
                     /> */}
-                    <textarea
-                        value={input.summary}
-                        onChange={(e) => handleChange(e)}
-                        placeholder="Summary..."
-                        name="summary"
-                    />
-                    {errors.summary && <p>{errors.summary}</p>}
+                        <textarea
+                            value={input.summary}
+                            onChange={(e) => handleChange(e)}
+                            placeholder="Summary..."
+                            name="summary"
+                            className={style.inputl}
+                        />
+                        {errors.summary && (
+                            <p className={style.error}>{errors.summary}</p>
+                        )}
+                    </div>
+                    {/* <br /> */}
+                    <div className={style.definicion2}>
+                        <label>Diets:</label>
+                        <select
+                            onChange={(e) => handleSelect(e)}
+                            className={style.select}
+                        >
+                            <option value={input.diets}>Type of diets</option>
+                            {dieta?.map((e, k) => {
+                                return (
+                                    <option key={k} value={e.name}>
+                                        {e.name}
+                                    </option>
+                                );
+                            })}
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <label>Health Score:</label>
-                    <input
-                        type="number"
-                        name="health_score"
-                        value={input.health_score}
-                        min="0"
-                        max={'100'}
-                        onChange={(e) => handleChange(e)}
-                    />
-                    {errors.health_score && <p>{errors.health_score}</p>}
-                    <label>Type of Dish:</label>
-                    <input
-                        type="text"
-                        value={input.dishtypes}
-                        name="dishtypes"
-                        placeholder="dishTypes..."
-                        onChange={(e) => handleChange(e)}
-                    />
-                    {errors.dishtypes && <p>{errors.dishtypes}</p>}
-                    <br />
-                    <label>Step By Step:</label>
-                    <textarea
-                        value={input.step_by_step}
-                        placeholder="Step by step..."
-                        name="step_by_step"
-                        onChange={(e) => handleChange(e)}
-                    />
-                    {errors.step_by_step && <p>{errors.step_by_step}</p>}
-                </div>
-                <br />
-                {/* <div>
-                    <label>Diets:</label>
-                    <select onChange={(e) => handleSelect(e)}>
-                        <option value={input.diets}>Type of diets</option>
-                        {dieta?.map((e, k) => {
-                            return (
-                                <option key={k} value={e.name}>
-                                    {e.name}
-                                </option>
-                            );
-                        })}
-                    </select>
-                </div> */}
             </form>
-            {/* {input.diets?.map((e) => {
+            {input.diets?.map((e) => {
                 return (
-                    <div key={e}>
-                        <p>{e}</p>
-                        <button onClick={(e) => handleDelect(e)}>X</button>
+                    <div key={e} className={style.boxis}>
+                        <p className={style.letra}>{e}</p>
+                        <button
+                            className={style.btnDelect}
+                            onClick={() => handleDelect(e)}
+                        >
+                            X
+                        </button>
                     </div>
                 );
-            })} */}
+            })}
         </div>
     );
 }

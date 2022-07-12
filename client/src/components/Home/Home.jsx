@@ -74,8 +74,10 @@ export default function Home() {
                     </div>
                 </div>
             ) : (
-                // <h2>Loading</h2>
-                <Loading />
+                <div className={style.cargar}>
+                    {/* <h2>Loading</h2> */}
+                    <Loading />
+                </div>
             )}
         </div>
     );

@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { getDetail, cleanDiets, cleanRecipe } from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../Loading/Loading';
-
+import style from './Detail.module.css';
 export default function Detail() {
     const dispatch = useDispatch();
     const detalles = useSelector((state) => state.details);
@@ -16,7 +16,7 @@ export default function Detail() {
     }, [dispatch, id]);
 
     return (
-        <div>
+        <div className={style.fondo}>
             {detalles.length > 0 ? (
                 <div>
                     <div>
@@ -37,14 +37,16 @@ export default function Detail() {
                             Type of dish: {detalles[0].dishtypes.toString()}
                         </h4>
                         <h4>Summary:</h4>
-                        <p>{detalles[0].summary.replace(/<[^>]*>/g, '')}</p>
+                        <p className={style.parrafo}>
+                            {detalles[0].summary.replace(/<[^>]*>/g, '')}
+                        </p>
                     </div>
                     <div>
                         <h4>Step By Step:</h4>
                         {typeof detalles[0].step_by_step === 'object' ? (
                             detalles[0].step_by_step.map((e, k) => {
                                 return (
-                                    <p key={k}>
+                                    <p className={style.pasos} key={k}>
                                         Paso Nº{e.number}:{e.step}
                                         <br />
                                     </p>
@@ -56,12 +58,14 @@ export default function Detail() {
                     </div>
                     <div>
                         <Link to={'/home'}>
-                            <button>Back to Home</button>
+                            <button className={style.box}>Back to Home</button>
                         </Link>
                     </div>
                 </div>
             ) : (
-                <Loading />
+                <div className={style.cargando}>
+                    <Loading />
+                </div>
             )}
         </div>
     );
