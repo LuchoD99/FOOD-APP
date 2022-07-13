@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import style from './Card.module.css';
 export default function Card({ id, name, image, diets }) {
     return (
-        <div>
-            <div>
+        <div className={style.inicio}>
+            <div className={style.card}>
                 <NavLink to={`/details/${id}`}>
                     <div>
                         <img
@@ -11,15 +12,16 @@ export default function Card({ id, name, image, diets }) {
                             alt="img not found"
                             width={'250px'}
                             height={'250px'}
+                            className={style.image}
                         />
-                        <h2>{name}</h2>
+                        <p className={style.letra}>{name}</p>
                     </div>
                 </NavLink>
                 <div>
                     {diets?.map((e, k) => {
                         return (
                             <div key={k}>
-                                <p>{e.name}</p>
+                                <p className={style.dietas}>{e.name}</p>
                             </div>
                         );
                     })}

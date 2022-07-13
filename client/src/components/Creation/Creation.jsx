@@ -85,6 +85,7 @@ export default function Creation() {
             diets: [],
         });
         history.push('/home');
+        window.location.reload();
     }
     return (
         <div className={style.fondo}>

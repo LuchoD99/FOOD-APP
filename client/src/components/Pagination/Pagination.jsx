@@ -1,24 +1,24 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
-
+import style from './Pagination.module.css';
 export default function Pagination({ recipeForPage, paginado, recipes }) {
     let page = [];
     for (let i = 1; i <= Math.ceil(recipes / recipeForPage); i++) {
         page.push(i);
     }
     return (
-        <nav>
-            <ul>
+        <nav className={style.nav}>
+            <ul className={style.ul}>
                 {page?.map((number) => {
                     return (
                         <li key={number}>
-                            <a
+                            <span
+                                className={style.span}
                                 onClick={() => {
-                                    return paginado(number);
+                                    paginado(number);
                                 }}
                             >
                                 {number}
-                            </a>
+                            </span>
                         </li>
                     );
                 })}

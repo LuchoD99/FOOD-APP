@@ -8,6 +8,7 @@ import {
     getDiets,
 } from '../../redux/actions';
 import Search from '../Search/Search';
+import style from './Filters.module.css';
 export default function Filters({ setCurrentPage, setOrder }) {
     const dispatch = useDispatch();
     const dieta = useSelector((state) => state.diets);
@@ -42,7 +43,7 @@ export default function Filters({ setCurrentPage, setOrder }) {
         setCurrentPage(1);
     }
     return (
-        <div>
+        <div className={style.flexi}>
             <div>
                 <Search />
             </div>
@@ -56,7 +57,10 @@ export default function Filters({ setCurrentPage, setOrder }) {
             </div>
             <div>
                 <label>Type of Diet</label>
-                <select onChange={(e) => handleTypeDiet(e)}>
+                <select
+                    onChange={(e) => handleTypeDiet(e)}
+                    className={style.input}
+                >
                     <option value="all">ALL</option>
                     {dieta?.map((e, k) => {
                         return (

@@ -31,6 +31,7 @@ export default function Home() {
         e.preventDefault();
         dispatch(cleanRecipe(dispatch));
         dispatch(getRecipe());
+        window.location.reload();
     }
     return (
         <div className={style.fondo}>
@@ -38,12 +39,17 @@ export default function Home() {
                 <div>
                     <NavBar />
                     <div>
-                        <div>
+                        <div className={style.filt}>
                             <Filters
                                 setCurrentPage={setCurrentPage}
                                 setOrder={setOrder}
                             />
-                            <button onClick={(e) => handleResert(e)}>
+                        </div>
+                        <div className={style.filt}>
+                            <button
+                                onClick={(e) => handleResert(e)}
+                                className={style.box}
+                            >
                                 Clear Filters
                             </button>
                         </div>
@@ -55,7 +61,7 @@ export default function Home() {
                                     recipeForPage={recipeForPage}
                                 />
                             </div>
-                            <div>
+                            <div className={style.cards}>
                                 {allrecipes?.map((e) => {
                                     return (
                                         <div key={e.id}>
