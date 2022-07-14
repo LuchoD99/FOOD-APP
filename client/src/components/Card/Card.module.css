@@ -3,6 +3,7 @@
     max-width: 120rem;
     margin: 1px auto;
     background: rgba(104, 100, 100, 0.459);
+    border-radius: 10%;
     padding: 18px 18px;
     box-shadow: 3px -1px 50px -11px rgba(0, 0, 0, 1);
     -webkit-box-shadow: 3px -1px 50px -11px rgba(0, 0, 0, 1);

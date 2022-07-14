@@ -206,7 +206,7 @@ export default function Creation() {
                             onChange={(e) => handleSelect(e)}
                             className={style.select}
                         >
-                            <option value={input.diets}>Type of diets</option>
+                            <option>Type of diets</option>
                             {dieta?.map((e, k) => {
                                 return (
                                     <option key={k} value={e.name}>

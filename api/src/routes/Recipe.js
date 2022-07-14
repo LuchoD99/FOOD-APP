@@ -12,6 +12,16 @@ router.get('/', async (req, res) => {
         //     return res.status(404).send('Not valid');
         // }
         if (name) {
+            if (
+                name === ' ' ||
+                name === ',' ||
+                name === '-' ||
+                name === '+' ||
+                name === ':'
+            ) {
+                // console.log('Holaaaa');
+                return res.status(404).send('Nose permite simbolos');
+            }
             // name = name.charAt(0).toUpperCase() + name.slice(1);
             // console.log(name);
             let nombre = todos.filter((e) =>

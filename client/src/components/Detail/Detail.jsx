@@ -18,30 +18,43 @@ export default function Detail() {
     return (
         <div className={style.fondo}>
             {detalles.length > 0 ? (
-                <div>
+                <div className={style.div}>
                     <div>
-                        <h2>{detalles[0].name.toUpperCase()}</h2>
+                        <h2 className={style.sub}>
+                            {detalles[0].name.toUpperCase()}
+                        </h2>
                         <img
+                            className={style.img}
                             src={detalles[0].image}
                             alt="img not found"
                             width={'250px'}
                             height={'250px'}
                         />
-                        <h3>
-                            Diets:{detalles[0].diets.map((e) => e.name + ',')}
-                        </h3>
+                        <h3>Diets:</h3>
+                        {detalles[0].diets.length === 0 ? (
+                            <p className={style.nopasos}>There is no diet </p>
+                        ) : (
+                            <p className={style.nopasos}>
+                                {detalles[0].diets.map((e) => e.name + ',')}
+                            </p>
+                        )}
                     </div>
                     <div>
-                        <h4>Health Score: {detalles[0].health_score}º</h4>
-                        <h4>
-                            Type of dish: {detalles[0].dishtypes.toString()}
-                        </h4>
-                        <h4>Summary:</h4>
-                        <p className={style.parrafo}>
-                            {detalles[0].summary.replace(/<[^>]*>/g, '')}
+                        <h3>Health Score: {detalles[0].health_score}º</h3>
+                        <h3>Type of dish:</h3>
+                        <p className={style.nopasos}>
+                            {detalles[0].dishtypes.toString()}
                         </p>
+                        <h4>Summary:</h4>
+                        {detalles[0].summary.length === 0 ? (
+                            <p className={style.parrafo}>There is no Summary</p>
+                        ) : (
+                            <p className={style.parrafo}>
+                                {detalles[0].summary.replace(/<[^>]*>/g, '')}
+                            </p>
+                        )}
                     </div>
-                    <div>
+                    <div className={style.step}>
                         <h4>Step By Step:</h4>
                         {typeof detalles[0].step_by_step === 'object' ? (
                             detalles[0].step_by_step.map((e, k) => {
@@ -52,8 +65,14 @@ export default function Detail() {
                                     </p>
                                 );
                             })
+                        ) : !detalles[0].step_by_step ? (
+                            <p className={style.nopasos}>
+                                There is no step by step
+                            </p>
                         ) : (
-                            <p>{detalles[0].step_by_step}</p>
+                            <p className={style.otro}>
+                                {detalles[0].step_by_step}
+                            </p>
                         )}
                     </div>
                     <div>

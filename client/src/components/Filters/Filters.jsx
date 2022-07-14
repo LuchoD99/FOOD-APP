@@ -48,7 +48,7 @@ export default function Filters({ setCurrentPage, setOrder }) {
                 <Search />
             </div>
             <div>
-                <label>Filter C-A</label>
+                <label className={style.tipo}>Filter C-A</label>
                 <select onChange={(e) => handleCreated(e)}>
                     <option value="all">ALL</option>
                     <option value="created">CREATED</option>
@@ -56,7 +56,7 @@ export default function Filters({ setCurrentPage, setOrder }) {
                 </select>
             </div>
             <div>
-                <label>Type of Diet</label>
+                <label className={style.tipo}>Type of Diet</label>
                 <select
                     onChange={(e) => handleTypeDiet(e)}
                     className={style.input}
@@ -72,7 +72,7 @@ export default function Filters({ setCurrentPage, setOrder }) {
                 </select>
             </div>
             <div>
-                <label>Orden</label>
+                <label className={style.tipo}>Orden</label>
                 <select onChange={(e) => handleAZ(e)}>
                     <option value="all">ALL</option>
                     <option value="A-Z">A-Z</option>
@@ -80,7 +80,7 @@ export default function Filters({ setCurrentPage, setOrder }) {
                 </select>
             </div>
             <div>
-                <label>Health Score</label>
+                <label className={style.tipo}>Health Score</label>
                 <select onChange={(e) => handleScore(e)}>
                     <option value="all">ALL</option>
                     <option value="max">Máx</option>

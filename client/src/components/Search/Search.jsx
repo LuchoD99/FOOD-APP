@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getRecipebyName, cleanRecipe } from '../../redux/actions';
+import { getRecipebyName, cleanRecipe, getDiets } from '../../redux/actions';
 import style from './Search.module.css';
 export default function Search() {
     const dispatch = useDispatch();
@@ -13,11 +13,18 @@ export default function Search() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (name === ' ' || name === ',') {
+        if (
+            name === ' ' ||
+            name === ',' ||
+            name === '-' ||
+            name === '+' ||
+            name === ':'
+        ) {
             alert('Busqueda incorrecta');
         }
         dispatch(cleanRecipe(dispatch));
         dispatch(getRecipebyName(name));
+        dispatch(getDiets());
         setName('');
     }
 

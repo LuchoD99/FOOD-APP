@@ -92,6 +92,7 @@ export function getRecipebyName(name) {
             });
         } catch (error) {
             alert('No se encontro la receta');
+            // window.location.reload();
             console.log(error);
         }
     };

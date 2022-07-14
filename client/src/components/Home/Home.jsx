@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getRecipe, cleanRecipe } from '../../redux/actions';
 import Card from '../Card/Card';
+import Error from '../Error/Error';
 import Filters from '../Filters/Filters';
 import Loading from '../Loading/Loading';
 import NavBar from '../NavBar/NavBar';
@@ -10,7 +11,7 @@ import style from './Home.module.css';
 export default function Home() {
     const dispatch = useDispatch();
     const recipes = useSelector((state) => state.recipes);
-
+    const [loading, setLoading] = useState(true);
     //paginado
     const [currentPage, setCurrentPage] = useState(1);
     const [recipeForPage, setRecipeForPage] = useState(9);
@@ -22,6 +23,10 @@ export default function Home() {
     useEffect(() => {
         dispatch(getRecipe());
     }, [dispatch]);
+
+    if (allrecipes.length > 0 && loading) {
+        setLoading(false);
+    }
 
     function paginado(pageNumber) {
         setCurrentPage(pageNumber);
@@ -35,7 +40,7 @@ export default function Home() {
     }
     return (
         <div className={style.fondo}>
-            {recipes.length > 0 ? (
+            {recipes.length > 0 && !loading ? (
                 <div>
                     <NavBar />
                     <div>
@@ -79,11 +84,13 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            ) : (
+            ) : !recipes.length > 0 && loading ? (
                 <div className={style.cargar}>
                     {/* <h2>Loading</h2> */}
                     <Loading />
                 </div>
+            ) : (
+                <Error />
             )}
         </div>
     );

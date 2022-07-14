@@ -10,7 +10,13 @@ select {
     border: none;
     outline: none;
     background-color: rgba(48, 30, 9, 0.3);
+    border-radius: 15%;
 }
 .input {
     width: 130px;
+}
+.tipo {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-decoration: underline;
+    font-weight: bold;
 }

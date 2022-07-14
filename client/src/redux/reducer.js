@@ -64,6 +64,10 @@ export default function rootReducer(state = initialState, action) {
                     : copyD.filter((e) =>
                           e.diets.some((e) => e.name === action.payload)
                       );
+            if (tipoDieta.length <= 0) {
+                tipoDieta = copyD;
+                alert('There are no recipe of the indicated type');
+            }
             return {
                 ...state,
                 recipes: tipoDieta,

@@ -6,7 +6,7 @@ export default function LandingPage() {
         <div className={style.fondo}>
             {/* <div className={style.flex}> */}
             <Link to={'/home'}>
-                <button className={style.box}>Ready?Go to</button>
+                <button className={style.box}>Welcome,Ready?Go</button>
             </Link>
             {/* </div> */}
         </div>
