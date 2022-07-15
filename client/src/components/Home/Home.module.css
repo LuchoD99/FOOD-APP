@@ -51,6 +51,15 @@ html body {
 }
 .filt {
     display: flex;
+    border-top-right-radius: 20%;
+    border-top-left-radius: 20%;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.479);
+}
+.filt2 {
+    display: flex;
+    border-bottom-right-radius: 30%;
+    border-bottom-left-radius: 30%;
     justify-content: center;
     background: rgba(0, 0, 0, 0.479);
 }

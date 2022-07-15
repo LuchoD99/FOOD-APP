@@ -50,7 +50,7 @@ export default function Home() {
                                 setOrder={setOrder}
                             />
                         </div>
-                        <div className={style.filt}>
+                        <div className={style.filt2}>
                             <button
                                 onClick={(e) => handleResert(e)}
                                 className={style.box}

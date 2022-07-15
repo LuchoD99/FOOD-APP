@@ -74,18 +74,30 @@ export default function Creation() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        dispatch(postRecipe(input));
-        setInput({
-            name: '',
-            image: '',
-            summary: '',
-            health_score: '',
-            dishtypes: '',
-            step_by_step: '',
-            diets: [],
-        });
-        history.push('/home');
-        window.location.reload();
+        if (
+            !input.name ||
+            !input.image ||
+            !input.summary ||
+            !input.health_score ||
+            !input.dishtypes ||
+            !input.step_by_step ||
+            !input.diets
+        ) {
+            alert('Some options are empty');
+        } else {
+            dispatch(postRecipe(input));
+            setInput({
+                name: '',
+                image: '',
+                summary: '',
+                health_score: '',
+                dishtypes: '',
+                step_by_step: '',
+                diets: [],
+            });
+            history.push('/home');
+            window.location.reload();
+        }
     }
     return (
         <div className={style.fondo}>
