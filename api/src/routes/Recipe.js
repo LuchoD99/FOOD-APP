@@ -8,9 +8,7 @@ router.get('/', async (req, res) => {
     try {
         let { name } = req.query;
         let todos = await getAllRecipe();
-        // if (name === ' ' || name === ',') {
-        //     return res.status(404).send('Not valid');
-        // }
+
         if (name) {
             if (
                 name === ' ' ||
@@ -22,7 +20,6 @@ router.get('/', async (req, res) => {
                 // console.log('Holaaaa');
                 return res.status(404).send('Nose permite simbolos');
             }
-            // name = name.charAt(0).toUpperCase() + name.slice(1);
             // console.log(name);
             let nombre = todos.filter((e) =>
                 e.name.toLowerCase().includes(name.toLowerCase())
@@ -30,7 +27,7 @@ router.get('/', async (req, res) => {
             // console.log(nombre.length);
             nombre.length
                 ? res.status(200).send(nombre)
-                : res.status(404).send('Tuvimos un error');
+                : res.status(404).send('Tuvimos un error en name');
         } else {
             // console.log(todos);
             return res.status(200).send(todos);

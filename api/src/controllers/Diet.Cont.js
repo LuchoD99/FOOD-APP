@@ -8,8 +8,10 @@ const getAllDiet = async () => {
             `https://api.spoonacular.com/recipes/complexSearch?apiKey=${YOUR_API_KEY}&addRecipeInformation=true&number=100`
         );
         let types = await diet.data.results.map((e) => e.diets);
+        //traemos todas las dietas de cada receta
         // console.log(types, 'Prueba---');
         let otro = types.flat();
+        // eliminamos los array que hay adentro
         // console.log(otro, 'Otro----');
         let Tipodieta = [
             ...new Set(otro),
@@ -17,6 +19,7 @@ const getAllDiet = async () => {
             'lacto vegetarian',
             'ovo vegatarian',
         ];
+        //--tipodieta copia todo de la variable otro y elimina los repetidos
         // console.log(Tipodieta);
         Tipodieta.forEach(async (e) => {
             await Diet.findOrCreate({
