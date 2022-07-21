@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
                 name === ':'
             ) {
                 // console.log('Holaaaa');
-                return res.status(404).send('Nose permite simbolos');
+                return res.status(404).send('No se permite simbolos');
             }
             // console.log(name);
             let nombre = todos.filter((e) =>
