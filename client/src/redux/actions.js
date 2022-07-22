@@ -10,6 +10,7 @@ export const FILTER_A_Z = 'FILTER_A_Z';
 export const FILTER_DIET = 'FILTER_DIET';
 export const FILTER_SCORE = 'FILTER_SCORE';
 export const FILTER_BY_NAME = 'FILTER_BY_NAME';
+export const CLEAN_DETAIL = 'CLEAN_DETAIL';
 
 export function getRecipe() {
     return async (dispatch) => {
@@ -28,6 +29,13 @@ export function getRecipe() {
 export function cleanRecipe(dispatch) {
     return dispatch({
         type: CLEAN_DIETS,
+        payload: [],
+    });
+}
+
+export function cleanDetail(dispatch) {
+    return dispatch({
+        type: CLEAN_DETAIL,
         payload: [],
     });
 }

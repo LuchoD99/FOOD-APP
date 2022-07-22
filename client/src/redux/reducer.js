@@ -10,6 +10,7 @@ import {
     GET_DIETS,
     GET_RECIPE,
     POST_RECIPE,
+    CLEAN_DETAIL,
 } from './actions';
 
 const initialState = {
@@ -41,6 +42,11 @@ export default function rootReducer(state = initialState, action) {
             return {
                 ...state,
                 diets: action.payload,
+            };
+        case CLEAN_DETAIL:
+            return {
+                ...state,
+                details: action.payload,
             };
         case FILTER_DB:
             let copy = state.allrecipes;

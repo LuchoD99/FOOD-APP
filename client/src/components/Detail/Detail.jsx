@@ -1,6 +1,11 @@
 import React, { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getDetail, cleanDiets, cleanRecipe } from '../../redux/actions';
+import {
+    getDetail,
+    cleanDiets,
+    cleanRecipe,
+    cleanDetail,
+} from '../../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import Loading from '../Loading/Loading';
 import style from './Detail.module.css';
@@ -11,9 +16,17 @@ export default function Detail() {
     useEffect(() => {
         dispatch(getDetail(id));
         return () => {
-            dispatch(cleanDiets(dispatch), cleanRecipe(dispatch));
+            dispatch(
+                cleanDiets(dispatch),
+                cleanRecipe(dispatch),
+                cleanDetail(dispatch)
+            );
         };
     }, [dispatch, id]);
+
+    function back() {
+        dispatch(cleanDetail(dispatch));
+    }
 
     return (
         <div className={style.fondo}>
@@ -77,7 +90,12 @@ export default function Detail() {
                     </div>
                     <div>
                         <Link to={'/home'}>
-                            <button className={style.box}>Back to Home</button>
+                            <button
+                                className={style.box}
+                                onClick={() => back()}
+                            >
+                                Back to Home
+                            </button>
                         </Link>
                     </div>
                 </div>
