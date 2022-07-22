@@ -13,7 +13,7 @@
 .box {
     width: 55vh;
     height: 5vh;
-    margin-top: 8vh; /*15vh*/
+    margin-top: 8vh;
     transition: 0.5s linear;
     font-size: 30px;
     text-align: center;
