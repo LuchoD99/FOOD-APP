@@ -15,13 +15,6 @@ export default function Detail() {
     const { id } = useParams();
     useEffect(() => {
         dispatch(getDetail(id));
-        return () => {
-            dispatch(
-                cleanDiets(dispatch),
-                cleanRecipe(dispatch),
-                cleanDetail(dispatch)
-            );
-        };
     }, [dispatch, id]);
 
     function back() {
@@ -69,7 +62,12 @@ export default function Detail() {
                     </div>
                     <div className={style.step}>
                         <h4>Step By Step:</h4>
-                        {typeof detalles[0].step_by_step === 'object' ? (
+                        {!detalles[0].step_by_step ? (
+                            <p className={style.nopasos}>
+                                There is no step by step
+                            </p>
+                        ) : typeof detalles[0].step_by_step === 'object' &&
+                          detalles[0].step_by_step.length > 0 ? (
                             detalles[0].step_by_step.map((e, k) => {
                                 return (
                                     <p className={style.pasos} key={k}>
@@ -78,7 +76,8 @@ export default function Detail() {
                                     </p>
                                 );
                             })
-                        ) : !detalles[0].step_by_step ? (
+                        ) : typeof detalles[0].step_by_step === 'object' &&
+                          detalles[0].step_by_step.length === 0 ? (
                             <p className={style.nopasos}>
                                 There is no step by step
                             </p>
